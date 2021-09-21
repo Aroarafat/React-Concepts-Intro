@@ -1,4 +1,5 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
 function MyComponent(props) {
   console.log(props);
+  const [points, setPoints] = useState(1);
   const myStyle = {
     backgroundColor: 'skyblue',
     border: '4px solid blue',
@@ -22,10 +24,15 @@ function MyComponent(props) {
     padding: '10px',
     borderRadius: '25px'
   }
+  const handleAddPoints = () => {
+    const newPoints = points * 2;
+    setPoints(newPoints)
+  }
   return (
     <div style={myStyle}>
       <h1>Brand-Name:{props.brand}</h1>
-      <p style={{ color: 'white', fontWeight: 'bold' }}>Price:{props.price}</p>
+      <p style={{ color: 'white', fontWeight: 'bold' }}>Price:{props.price},I have points:{points}</p>
+      <button onClick={handleAddPoints}>Add-Points</button>
     </div>
   )
 }
